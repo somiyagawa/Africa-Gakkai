@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コプト語の準体言の性標示</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* モダンなスタイル */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --primary-light: #60a5fa;
+            --secondary: #7c3aed;
+            --secondary-light: #a78bfa;
+            --accent: #f59e0b;
+            --dark: #111827;
+            --light: #f3f4f6;
+            --gray: #4b5563;
+            --male-color: #3f83f8;
+            --female-color: #ec4899;
+            --neutral-color: #9ca3af;
+            --background: #0f172a;
+            --card-bg: #1e293b;
+            --highlight: #f59e0b;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background);
+            color: var(--light);
+            overflow: hidden;
+        }
+        
+        .slideshow-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide {
+            width: 1000px;
+            height: 700px;
+            background-color: var(--card-bg);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            overflow: auto;
+            padding: 30px;
+            display: none;
+            border-radius: 16px;
+            transition: all 0.5s ease;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        .slide-header {
+            border-left: 5px solid var(--primary);
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-weight: 700;
+            margin: 0;
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        
+        h2 {
+            font-weight: 600;
+            font-size: 1.6rem;
+            color: var(--primary-light);
+            margin-top: 0;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: var(--secondary-light);
+        }
+        
+        p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        
+        .highlight {
+            color: var(--highlight);
+            font-weight: bold;
+        }
+        
+        .male-marker {
+            color: var(--male-color);
+            font-weight: bold;
+        }
+        
+        .female-marker {
+            color: var(--female-color);
+            font-weight: bold;
+        }
+        
+        .neutral-marker {
+            color: var(--neutral-color);
+            font-weight: bold;
+        }
+        
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            color: var(--light);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .arrow:hover {
+            background-color: var(--primary);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .prev {
+            left: 30px;
+        }
+        
+        .next {
+            right: 30px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            font-weight: 500;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-light);
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-header i {
+            margin-right: 10px;
+        }
+        
+        .grid {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .info-block {
+            background: linear-gradient(135deg, rgba(34, 64, 159, 0.15) 0%, rgba(100, 67, 186, 0.15) 100%);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(124, 58, 237, 0.2) 100%);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .pill {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 13px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            color: var(--light);
+        }
+        
+        .pill-blue {
+            background-color: var(--primary);
+        }
+        
+        .pill-purple {
+            background-color: var(--secondary);
+        }
+        
+        .pill-orange {
+            background-color: var(--accent);
+        }
+        
+        .dots-container {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .dot.active {
+            background-color: var(--primary);
+            transform: scale(1.2);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        table th {
+            background-color: rgba(37, 99, 235, 0.2);
+            padding: 12px;
+            text-align: left;
+            color: var(--light);
+        }
+        
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        table tr:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        /* アニメーション */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .animate-fade {
+            animation: fadeIn 1s ease;
+        }
+        
+        /* レスポンシブ対応 */
+        @media (max-width: 1100px) {
+            .slide {
+                width: 90vw;
+                height: 90vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="slideshow-container">
+    <!-- 左右の矢印 -->
+    <div class="arrow prev" onclick="changeSlide(-1)">
+        <i class="fas fa-chevron-left"></i>
+    </div>
+    <div class="arrow next" onclick="changeSlide(1)">
+        <i class="fas fa-chevron-right"></i>
+    </div>
+    
+    <!-- スライド1: タイトル -->
+    <div class="slide active animate-fade">
+        <div style="text-align:center; padding:120px 0; height: 100%;">
+            <div style="padding-bottom: 40px;">
+                <span class="pill pill-blue">言語類型論</span>
+                <span class="pill pill-purple">コプト語</span>
+                <span class="pill pill-orange">準体言</span>
+            </div>
+            <h1 style="font-size:3.2rem; margin-bottom:20px;">コプト語の準体言の性標示</h1>
+            <p style="font-size:1.7rem; margin-bottom:15px; color: var(--primary-light);">Gender Marking on Coptic Nominalizations</p>
+            <p style="font-size:1.2rem; font-style:italic; opacity: 0.7;">A Case Study of Sahidic Coptic</p>
+            <div style="margin-top:80px;">
+                <p style="font-size:1.5rem; font-weight: 500;">宮川 創</p>
+                <p style="font-size:1.1rem; opacity: 0.7;">筑波大学 人文社会系</p>
+            </div>
+            <p style="position:absolute; bottom:20px; right:30px; font-size:0.9rem; opacity: 0.7;">日本アフリカ学会 2023年度研究大会</p>
+        </div>
+    </div>
+    
+    <!-- スライド2: 研究の要旨 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h1>研究の要旨と導入</h1>
+        </div>
+        <div class="grid grid-2">
+            <div>
+                <h2><i class="fas fa-bullseye" style="color: var(--primary);"></i> 研究目的</h2>
+                <div class="card">
+                    <ul style="padding-left: 20px; line-height: 1.8;">
+                        <li>コプト語サイード方言における<span class="highlight">準体言の性標示</span>の分析</li>
+                        <li><span class="highlight">準体言の階層</span>のどのレベルに性標示が現れるかの考察</li>
+                        <li>性標示が<span class="highlight">義務的か随意的か</span>の検証</li>
+                        <li>柴谷の<span class="highlight">体言化階層</span>に照らした検証</li>
+                    </ul>
+                </div>
+                <div class="info-block" style="margin-top: 20px;">
+                    <p style="margin: 0;"><i class="fas fa-lightbulb"></i> 「準体言」とは、動詞や文などを名詞的に機能させる言語現象を指す。柴谷方良（Masayoshi Shibatani）の理論では、名詞化と分類システムが言語の普遍的特徴として関連している。</p>
+                </div>
+            </div>
+            <div>
+                <h2><i class="fas fa-language" style="color: var(--primary);"></i> コプト語の性標示システム</h2>
+                <div class="card">
+                    <p>コプト語の性標示：</p>
+                    <div style="background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px; align-items: center;">
+                            <span>男性単数形</span>
+                            <span class="male-marker" style="font-size: 1.2rem;">p-</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px; align-items: center;">
+                            <span>女性単数形</span>
+                            <span class="female-marker" style="font-size: 1.2rem;">t-</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span>共通複数形</span>
+                            <span class="neutral-marker" style="font-size: 1.2rem;">n-</span>
+                        </div>
+                    </div>
+                    <p><span class="highlight">定冠詞</span>が準体言の性標示と<span class="highlight">名詞句成立標識</span>の二重機能</p>
+                </div>
+                <div class="gradient-bg" style="margin-top: 20px;">
+                    <div class="card-header">
+                        <i class="fas fa-quote-left"></i> 本研究の新規性
+                    </div>
+                    <p>コプト語の性標示が準体言形成において果たす二重機能の実証的解明：名詞句としての成立条件と性による分類標示</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- スライド3: 背景 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h1>コプト語の背景と歴史的概要</h1>
+        </div>
+        <div class="grid grid-2">
+            <div>
+                <h2><i class="fas fa-history" style="color: var(--primary);"></i> エジプト語の歴史的発展</h2>
+                <div class="card" style="height: 330px; overflow-y: auto;">
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <div style="min-width: 160px; font-weight: 500;"><span class="pill pill-blue">前3200年頃</span></div>
+                        <div>原エジプト語（原象形文字）</div>
+                    </div>
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <div style="min-width: 160px; font-weight: 500;"><span class="pill pill-blue">前2700-2100年頃</span></div>
+                        <div>古エジプト語（象形文字・神官文字）</div>
+                    </div>
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <div style="min-width: 160px; font-weight: 500;"><span class="pill pill-blue">前2300-400年頃</span></div>
+                        <div>中エジプト語（象形文字・神官文字）</div>
+                    </div>
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <div style="min-width: 160px; font-weight: 500;"><span class="pill pill-blue">前1400-700年頃</span></div>
+                        <div>後期エジプト語（象形文字・神官文字）</div>
+                    </div>
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <div style="min-width: 160px; font-weight: 500;"><span class="pill pill-purple">前8世紀-後5世紀</span></div>
+                        <div>デモティック語（デモティック文字）</div>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div style="min-width: 160px; font-weight: 500;"><span class="pill pill-orange">後3-21世紀</span></div>
+                        <div>コプト語（コプト文字）</div>
+                    </div>
+                </div>
+                <div class="gradient-bg" style="margin-top: 20px;">
+                    <p style="font-weight: 500; color: var(--highlight);">
+                        歴史的発展
+                    </p>
+                    <p>
+                        コプト語の定冠詞付き関係節構造は、古代エジプト語の<span class="highlight">定冠詞男性単数形p3</span>と<span class="highlight">関係節化転換詞nt(.j)</span>に由来
+                    </p>
+                </div>
+            </div>
+            <div>
+                <h2><i class="fas fa-map-marked-alt" style="color: var(--primary);"></i> サイード方言</h2>
+                <div class="card">
+                    <div style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%); padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--accent);">
+                        <p style="font-weight: 600; color: var(--accent); margin-bottom: 5px;">サイード方言（Sahidic）</p>
+                        <p style="font-size: 0.95rem;">4-11世紀の<span class="highlight">標準方言</span>・文学言語</p>
+                        <div style="opacity: 0.7; font-size: 0.85rem; margin-top: 8px;">
+                            <i class="fas fa-book"></i> 主にエジプト南部で使用
+                        </div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%); padding: 15px; border-radius: 8px; border-left: 4px solid var(--male-color);">
+                        <p style="font-weight: 600; color: var(--male-color); margin-bottom: 5px;">ボハイル方言（Bohairic）</p>
+                        <p style="font-size: 0.95rem;">11世紀以降の<span class="highlight">典礼標準方言</span></p>
+                        <div style="opacity: 0.7; font-size: 0.85rem; margin-top: 8px;">
+                            <i class="fas fa-church"></i> 現在もコプト正教会で使用
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 20px;">
+                    <div class="card-header">
+                        <i class="fas fa-globe-africa"></i> アフロ・アジア語族
+                    </div>
+                    <p>コプト語はアフロ・アジア語族のエジプト語派唯一の言語で、文法体系において北アフリカおよび西アジアの他の言語と系統的関連性を持っています。</p>
+                    <div style="opacity: 0.7; font-size: 0.85rem; margin-top: 10px;">
+                        <i class="fas fa-language"></i> 関連言語：セム語派（アラビア語、ヘブライ語など）、ベルベル語派、クシ語派（オロモ語、ソマリ語など）
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- スライド4: 理論的枠組み -->
+    <div class="slide">
+        <div class="slide-header">
+            <h1>理論的枠組み：柴谷の体言化階層</h1>
+        </div>
+        <div class="grid grid-2">
+            <div>
+                <h2><i class="fas fa-project-diagram" style="color: var(--primary);"></i> 柴谷の体言化階層モデル</h2>
+                <div class="gradient-bg">
+                    <h3>体言化階層</h3>
+                    <p>分類標識（性・分類辞）が現れる順序に関する普遍的傾向</p>
+                    <div style="background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 10px; text-align: center; font-weight: bold; margin: 15px 0; font-size: 1.2rem;">
+                        数詞 <i class="fas fa-angle-right" style="color: var(--primary-light);"></i> 指示詞 <i class="fas fa-angle-right" style="color: var(--primary-light);"></i> 属格名詞句 <i class="fas fa-angle-right" style="color: var(--primary-light);"></i> 用言基盤準体言
+                    </div>
+                    <p style="font-style: italic; font-size: 0.9rem; opacity: 0.8;">「右側の要素に分類標識があれば、左側のすべての要素にも分類標識が存在する」</p>
+                </div>
+                <div class="card" style="margin-top: 20px;">
+                    <p style="font-weight: 600; color: var(--male-color);">体言化階層の二つの次元</p>
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <div style="min-width: 30px; text-align: center;"><i class="fas fa-square" style="color: var(--primary); font-size: 0.6rem;"></i></div>
+                        <div>構造的次元：NP用法（名詞句として機能）</div>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div style="min-width: 30px; text-align: center;"><i class="fas fa-square" style="color: var(--primary); font-size: 0.6rem;"></i></div>
+                        <div>機能的次元：修飾用法（他の名詞を修飾）</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2><i class="fas fa-microscope" style="color: var(--primary);"></i> コプト語への応用</h2>
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-flask"></i> 本研究の位置づけ
+                    </div>
+                    <ul style="padding-left: 20px; line-height: 1.8;">
+                        <li>コプト語では階層<span class="highlight">全体にわたって</span>性標示が観察される</li>
+                        <li>特に<span class="highlight">用言基盤準体言（関係節）</span>で必須要素として現れる</li>
+                        <li><span class="highlight">単数形では義務的</span>、<span class="highlight">複数形では中和</span></li>
+                        <li>アフロ・アジア語族に共通する<span class="highlight">性標示パターン</span>を示す</li>
+                    </ul>
+                </div>
+                <div class="card" style="margin-top: 20px;">
+                    <h3 style="margin-top: 0;">分析データ</h3>
+                    <p>Coptic SCRIPTORIUM（コプト語デジタルコーパス）から抽出した実例に基づく分析</p>
+                    <div style="margin-top: 10px; border-left: 3px solid var(--primary); padding-left: 15px; font-size: 0.9rem;">
+                        <p style="margin: 5px 0;">
+                            <i class="fas fa-file-alt" style="color: var(--primary-light);"></i> サイード方言のテキスト群
+                        </p>
+                        <p style="margin: 5px 0;">
+                            <i class="fas fa-book-open" style="color: var(--primary-light);"></i> 宗教文書・文学作品等のジャンル
+                        </p>
+                        <p style="margin: 5px 0;">
+                            <i class="fas fa-database" style="color: var(--primary-light);"></i> 形態・統語情報が付与された検索可能なデータ
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- スライド5: 性標示システム -->
+    <div class="slide">
+        <div class="slide-header">
+            <h1>コプト語の性標示システム：義務性と中和</h1>
+        </div>
+        <div class="grid grid-2">
+            <div>
+                <h2><i class="fas fa-venus-mars" style="color: var(--primary);"></i> 定冠詞による性標示</h2>
+                <table>
+                    <tr>
+                        <th style="width: 30%;"></th>
+                        <th style="width: 23%;">男性</th>
+                        <th style="width: 23%;">女性</th>
+                        <th style="width: 24%;">複数</th>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 500;">定冠詞</td>
+                        <td style="text-align: center;"><span class="male-marker" style="font-size: 1.1rem;">p-</span></td>
+                        <td style="text-align: center;"><span class="female-marker" style="font-size: 1.1rem;">t-</span></td>
+                        <td style="text-align: center;"><span class="neutral-marker" style="font-size: 1.1rem;">n-</span></td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 500;">指示冠詞</td>
+                        <td style="text-align: center;"><span class="male-marker" style="font-size: 1.1rem;">p-ei-</span></td>
+                        <td style="text-align: center;"><span class="female-marker" style="font-size: 1.1rem;">t-ei-</span></td>
+                        <td style="text-align: center;"><span class="neutral-marker" style="font-size: 1.1rem;">n-ei-</span></td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 500;">所有冠詞</td>
+                        <td style="text-align: center;"><span class="male-marker" style="font-size: 1.1rem;">p-e-f-</span></td>
+                        <td style="text-align: center;"><span class="female-marker" style="font-size: 1.1rem;">t-e-s-</span></td>
+                        <td style="text-align: center;"><span class="neutral-marker" style="font-size: 1.1rem;">n-e-u-</span></td>
+                    </tr>
+                </table>
+                
+                <div class="card" style="margin-top: 20px;">
+                    <div class="card-header" style="color: var(--male-color);">
+                        <i class="fas fa-check-circle"></i> 単数形における<span class="highlight">義務的な</span>性標示
+                    </div>
+                    <p>単数形では男性形<span class="male-marker">p-</span>か女性形<span class="female-marker">t-</span>の選択が<span class="highlight">必須</span></p>
+                    <div style="margin-top: 10px; font-size: 0.9rem; padding: 10px; background: rgba(255, 255, 255, 0.05); border-radius: 8px;">
+                        <p style="margin: 0;">
+                            <i class="fas fa-code"></i> 例：<span class="male-marker">p-</span>kah n-kême (DEF.SG.M-地.M GEN-エジプト.F)
+                        </p>
+                        <p style="margin: 5px 0; opacity: 0.7; font-style: italic;">「エジプトの地」</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2><i class="fas fa-fingerprint" style="color: var(--primary);"></i> 性標示の特徴</h2>
+                <div class="card">
+                    <h3 style="margin-top: 0;">コプト語の性標示の特徴</h3>
+                    <div class="card" style="background: rgba(63, 131, 248, 0.1); margin-bottom: 10px; border-left: 3px solid var(--male-color);">
+                        <p style="font-weight: 500; color: var(--male-color); margin-bottom: 5px;">1. 単数形での義務的性標示</p>
+                        <p style="margin: 0;">単数形では男性か女性かの選択が<span class="highlight">必須</span></p>
+                    </div>
+                    <div class="card" style="background: rgba(236, 72, 153, 0.1); margin-bottom: 10px; border-left: 3px solid var(--female-color);">
+                        <p style="font-weight: 500; color: var(--female-color); margin-bottom: 5px;">2. 複数形での性対立の中和</p>
+                        <p style="margin: 0;">複数形では<span class="highlight">共通形n-</span>が使用され、性の対立が消失</p>
+                    </div>
+                    <div class="card" style="background: rgba(156, 163, 175, 0.1); border-left: 3px solid var(--neutral-color);">
+                        <p style="font-weight: 500; color: var(--neutral-color); margin-bottom: 5px;">3. 定冠詞の二重機能</p>
+                        <p style="margin: 0;">名詞句用法標示と性標示を<span class="highlight">同時に</span>担う</p>
+                    </div>
+                </div>
+                
+                <div class="gradient-bg" style="margin-top: 20px;">
+                    <p style="font-weight: 600; margin-bottom: 10px;">数詞と性標示</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <div style="background: rgba(63, 131, 248, 0.1); padding: 10px; border-radius: 8px;">
+                            <p style="font-weight: 500; color: var(--male-color); margin: 0;">男性形</p>
+                            <p style="font-size: 1.1rem; margin: 5px 0;"><span class="male-marker">oua</span> (1), <span class="male-marker">snau</span> (2)</p>
+                        </div>
+                        <div style="background: rgba(236, 72, 153, 0.1); padding: 10px; border-radius: 8px;">
+                            <p style="font-weight: 500; color: var(--female-color); margin: 0;">女性形</p>
+                            <p style="font-size: 1.1rem; margin: 5px 0;"><span class="female-marker">ouei</span> (1), <span class="female-marker">snte</span> (2)</p>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.8;"><i class="fas fa-info-circle"></i> 数詞1-10の基本形に加え、序数も男性・女性形の区別を持つ</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- スライド6: 用言基盤準体言の例1 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h1>用言基盤準体言の具体例（1）</h1>
+        </div>
+        <div class="grid grid-2">
+            <div>
+                <h2><i class="fas fa-file-code" style="color: var(--primary);"></i> 関係節の名詞句用法</h2>
+                <div class="card">
+                    <div class="card-header" style="color: var(--male-color);">
+                        <i class="fas fa-book"></i> マルコ福音書8:1の例
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 8px; margin: 15px 0; font-family: monospace;">
+                        <p style="font-size: 1.2rem; letter-spacing: 1px;">
+                            <span class="male-marker">p-</span>et-ou-na-ouom-f
+                        </p>
+                        <p style="font-size: 0.8rem; color: var(--gray); margin-top: 8px;">
+                            DEF.SG.M-NMLZ(REL)-3PL.INDEF-FUT-食べる-3SG.M.RSMP
+                        </p>
+                        <p style="font-style: italic; margin-top: 15px; font-family: sans-serif;">
+                            「食べられる物（はなんでも）」
+                        </p>
+                    </div>
+                    <div style="background: rgba(63, 131, 248, 0.1); padding: 10px; border-radius: 8px; font-size: 0.9rem;">
+                        <p style="margin: 0;">
+                            <i class="fas fa-info-circle" style="color: var(--male-color);"></i>
+                            関係節の名詞句用法では、性標示（定冠詞）が<span class="highlight">必須の要素</span>として現れる
+                        </p>
+                    </div>
+                </div>
+                <div class="gradient-bg" style="margin-top: 20px;">
+                    <p style="font-weight: 600; color: var(--accent); margin-bottom: 10px;">三層構造の性分布</p>
+                    <ol style="padding-left: 25px; margin: 0;">
+                        <li style="margin-bottom: 8px;"><span class="highlight">明示的な性標示</span>：冠詞などの文法要素に現れる</li>
+                        <li style="margin-bottom: 8px;"><span class="highlight">潜在的な性</span>：語彙に内在するが一致によってのみ表面化</li>
+                        <li><span class="highlight">性の中和</span>：複数形と文法化形式で対立が消失</li>
+                    </ol>
+                </div>
+            </div>
+            <div>
+                <h2><i class="fas fa-cogs" style="color: var(--primary);"></i> 性標示の機能</h2>
+                <div class="card">
+                    <h3 style="margin-top: 0;">定冠詞の二重機能</h3>
+                    <div class="card" style="background: rgba(63, 131, 248, 0.1); margin-bottom: 15px; border-left: 3px solid var(--male-color);">
+                        <p style="font-weight: 500; color: var(--male-color); margin-bottom: 5px;">名詞句用法標示</p>
+                        <p style="margin: 0;">定冠詞が<span class="highlight">節や動詞句</span>を名詞句として成立させる</p>
+                    </div>
+                    <div class="card" style="background: rgba(236, 72, 153, 0.1); border-left: 3px solid var(--female-color);">
+                        <p style="font-weight: 500; color: var(--female-color); margin-bottom: 5px;">性標示</p>
+                        <p style="margin: 0;">性による一致現象を示し、<span class="highlight">参照対象の解釈</span>に関連</p>
+                    </div>
+                </div>
+                
+                <div class="card" style="margin-top: 20px; background: linear-gradient(135deg, rgba(63, 131, 248, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);">
+                    <div class="card-header">
+                        <i class="fas fa-chart-line"></i> コーパス分析結果
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <div style="display: flex; margin-bottom: 10px;">
+                            <div style="width: 50px; text-align: center; margin-right: 10px;">
+                                <i class="fas fa-mars" style="color: var(--male-color); font-size: 1.5rem;"></i>
+                            </div>
+                            <div>
+                                無標の<span class="male-marker">男性形</span>が汎用的に使用される傾向
+                                <p style="margin: 5px 0; font-size: 0.85rem; opacity: 0.7;">生物・無生物、具体・抽象など広範囲に使用</p>
+                            </div>
+                        </div>
+                        <div style="display: flex;">
+                            <div style="width: 50px; text-align: center; margin-right: 10px;">
+                                <i class="fas fa-venus" style="color: var(--female-color); font-size: 1.5rem;"></i>
+                            </div>
+                            <div>
+                                <span class="female-marker">女性形</span>は特定の意味領域と結びつく傾向
+                                <p style="margin: 5px 0; font-size: 0.85rem; opacity: 0.7;">抽象概念、場所名、制度名などに頻出</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- スライド7: 用言基盤準体言の例2 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h1>用言基盤準体言の具体例（2）</h1>
+        </div>
+        <div class="grid grid-2">
+            <div>
+                <h2><i class="fas fa-vial" style="color: var(--primary);"></i> 文法化の事例</h2>
+                <div class="card">
+                    <div class="card-header" style="color: var(--male-color);">
+                        <i class="fas fa-code-branch"></i> 文法化による体言化接頭辞の発展
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 8px; margin: 15px 0; font-family: monospace;">
+                        <p style="font-size: 1.2rem; letter-spacing: 1px;">
+                            <span class="male-marker">p-pet-</span>ouaab=de apa logginos
+                        </p>
+                        <p style="font-size: 0.8rem; color: var(--gray); margin-top: 8px;">
+                            DEF.SG.M-NMLZ-聖である.STA=PTCL 師父 ロンギノス.M
+                        </p>
+                        <p style="font-style: italic; margin-top: 15px; font-family: sans-serif;">
+                            「聖者・師父・ロンギノスが…」
+                        </p>
+                        <p style="font-size: 0.8rem; color: var(--gray); margin-top: 8px; font-style: italic; font-family: sans-serif;">
+                            (Apophthegmata Patrum)
+                        </p>
+                    </div>
+                    <div style="background: rgba(63, 131, 248, 0.1); padding: 10px; border-radius: 8px; font-size: 0.9rem;">
+                        <p style="margin: 0;">
+                            <i class="fas fa-info-circle" style="color: var(--male-color);"></i>
+                            <span class="male-marker">p-</span>と<span class="neutral-marker">et-</span>が完全に文法化し、<span class="highlight">pet-</span>という体言化接頭辞に発展
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2><i class="fas fa-history" style="color: var(--primary);"></i> 歴史的発展</h2>
+                <div class="card">
+                    <h3 style="margin-top: 0;">古代エジプト語からの発展</h3>
+                    <div class="card" style="margin-bottom: 15px;">
+                        <p style="font-weight: 500; margin-bottom: 10px;">古代エジプト語の構成要素</p>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px; align-items: center;">
+                            <span>定冠詞男性単数形</span>
+                            <span style="color: var(--male-color); font-weight: bold;">p3</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span>関係節化転換詞</span>
+                            <span style="color: var(--neutral-color); font-weight: bold;">nt(.j)</span>
+                        </div>
+                    </div>
+                    <div class="gradient-bg">
+                        <p style="font-weight: 500; color: var(--accent); margin-bottom: 10px;">文法化の段階</p>
+                        <div class="timeline">
+                            <div style="position: relative; padding-left: 30px; margin-bottom: 12px;">
+                                <div style="position: absolute; left: 0; top: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">1</div>
+                                <div>独立した構文要素 (<span class="male-marker">p3</span> + <span class="neutral-marker">nt(.j)</span>)</div>
+                            </div>
+                            <div style="position: relative; padding-left: 30px; margin-bottom: 12px;">
+                                <div style="position: absolute; left: 0; top: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">2</div>
+                                <div>準体言標識化 (<span class="male-marker">p-</span><span class="neutral-marker">et-</span>)</div>
+                            </div>
+                            <div style="position: relative; padding-left: 30px;">
+                                <div style="position: absolute; left: 0; top: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">3</div>
+                                <div>完全な文法化 (<span class="highlight">pet-</span>)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 20px; background: linear-gradient(135deg, rgba(63, 131, 248, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);">
+                    <p style="margin: 0;">
+                        <i class="fas fa-lightbulb" style="color: var(--primary-light);"></i>
+                        <span class="highlight">文法化における性の中和</span>：<span class="male-marker">p-</span>(男性)由来の<span class="highlight">pet-</span>は、完全文法化により性標示機能を失い、<span class="female-marker">t-</span>や<span class="neutral-marker">n-</span>と共起可能に
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- スライド8: 結論 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h1>結論と研究の意義</h1>
+        </div>
+        <div class="grid grid-2">
+            <div>
+                <h2><i class="fas fa-clipboard-check" style="color: var(--primary);"></i> 主要な発見</h2>
+                <div class="card">
+                    <h3>コプト語の準体言における性標示の特徴</h3>
+                    <div class="card" style="background: rgba(63, 131, 248, 0.1); margin-bottom: 10px; border-left: 3px solid var(--male-color);">
+                        <p style="font-weight: 500; color: var(--male-color); margin-bottom: 5px;">1. 単数形での義務的な性標示</p>
+                        <p style="margin: 0;">男性形<span class="male-marker">p-</span>か女性形<span class="female-marker">t-</span>の選択が必須</p>
+                    </div>
+                    <div class="card" style="background: rgba(236, 72, 153, 0.1); margin-bottom: 10px; border-left: 3px solid var(--female-color);">
+                        <p style="font-weight: 500; color: var(--female-color); margin-bottom: 5px;">2. 複数形での性対立の中和</p>
+                        <p style="margin: 0;">複数形では共通形<span class="neutral-marker">n-</span>が使用され性の対立が消失</p>
+                    </div>
+                    <div class="card" style="background: rgba(156, 163, 175, 0.1); border-left: 3px solid var(--neutral-color);">
+                        <p style="font-weight: 500; color: var(--neutral-color); margin-bottom: 5px;">3. 定冠詞の二重機能</p>
+                        <p style="margin: 0;">名詞句用法標示と性標示を同時に担う</p>
+                    </div>
+                </div>
+                <div class="gradient-bg" style="margin-top: 20px;">
+                    <p style="font-weight: 500; color: var(--accent);">柴谷の階層との関係</p>
+                    <div style="background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 8px; text-align: center; font-weight: bold; margin: 10px 0;">
+                        数詞 <i class="fas fa-angle-right" style="color: var(--primary-light);"></i> 指示詞 <i class="fas fa-angle-right" style="color: var(--primary-light);"></i> 属格名詞句 <i class="fas fa-angle-right" style="color: var(--primary-light);"></i> 用言基盤準体言
+                    </div>
+                    <div style="font-size: 0.9rem;">
+                        <div style="display: flex; margin-bottom: 5px;">
+                            <div style="min-width: 20px; text-align: center; margin-right: 5px;"><i class="fas fa-check" style="color: var(--accent);"></i></div>
+                            <div>階層上部（数詞・指示詞・属格）では理論と一致</div>
+                        </div>
+                        <div style="display: flex;">
+                            <div style="min-width: 20px; text-align: center; margin-right: 5px;"><i class="fas fa-exclamation" style="color: var(--accent);"></i></div>
+                            <div>用言基盤準体言では形容詞との関係に例外が見られる</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2><i class="fas fa-lightbulb" style="color: var(--primary);"></i> 理論的意義</h2>
+                <div class="grid" style="grid-template-rows: repeat(3, auto); gap: 15px;">
+                    <div class="card">
+                        <div style="display: flex; align-items: flex-start;">
+                            <div style="min-width: 40px; text-align: center; margin-right: 15px;">
+                                <div style="width: 30px; height: 30px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                                    <i class="fas fa-brain" style="color: white; font-size: 0.9rem;"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 style="margin-top: 0;">柴谷の体言化理論への貢献</h3>
+                                <p style="margin: 0;">「<span class="highlight">分類を伴う体言化マーカー</span>」としての性標示の役割を支持</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div style="display: flex; align-items: flex-start;">
+                            <div style="min-width: 40px; text-align: center; margin-right: 15px;">
+                                <div style="width: 30px; height: 30px; background: var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                                    <i class="fas fa-globe-africa" style="color: white; font-size: 0.9rem;"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 style="margin-top: 0;">アフロ・アジア語族研究への貢献</h3>
+                                <p style="margin: 0;">準体言の性標示パターンの<span class="highlight">多様性</span>を示す事例として類型論的意義</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div style="display: flex; align-items: flex-start;">
+                            <div style="min-width: 40px; text-align: center; margin-right: 15px;">
+                                <div style="width: 30px; height: 30px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                                    <i class="fas fa-history" style="color: white; font-size: 0.9rem;"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 style="margin-top: 0;">文法化プロセスの解明</h3>
+                                <p style="margin: 0;">性標示が<span class="highlight">通時的変化</span>を経て異なる機能を獲得する過程を解明</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 20px;">
+                    <div class="card-header">
+                        <i class="fas fa-quote-left"></i> 研究の普遍的意義
+                    </div>
+                    <p>本研究は、言語の分類システムの本質的機能が単なる語彙的区分ではなく、言語の統語的・談話的組織化にあることを示している。性標示が準体言形成に果たす二重機能は、人間言語における名詞化と分類体系の相互作用の普遍的メカニズムの理解に貢献する。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- スライド9: 参考文献と謝辞 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h1>参考文献と謝辞</h1>
+        </div>
+        <div class="grid grid-2">
+            <div>
+                <h2><i class="fas fa-book" style="color: var(--primary);"></i> 主要参考文献</h2>
+                <div class="card" style="height: 400px; overflow-y: auto;">
+                    <p style="padding-left: 20px; text-indent: -20px; margin-bottom: 15px;">
+                        Layton, Bentley. 2011. <i>A Coptic grammar: With chrestomathy and glossary. Sahidic dialect</i>. 3rd ed. Wiesbaden: Harrassowitz.
+                    </p>
+                    <p style="padding-left: 20px; text-indent: -20px; margin-bottom: 15px;">
+                        Shibatani, Masayoshi. 2019. What is nominalization? Towards the theoretical foundations of nominalization. In Roberto Zariquiey, Masayoshi Shibatani, and David W. Fleck (eds.), <i>Nominalization in languages of the Americas</i>, 15–167. Amsterdam: John Benjamins.
+                    </p>
+                    <p style="padding-left: 20px; text-indent: -20px; margin-bottom: 15px;">
+                        Shibatani, Masayoshi. 2023. Towards dynamic functional typology: Classifiers, genders, and nominalization. <i>Historical Linguistics in Japan</i> 12, 1–52.
+                    </p>
+                    <p style="padding-left: 20px; text-indent: -20px; margin-bottom: 15px;">
+                        Sterling, Gregory E. 2008. <i>Coptic paradigms: A summary of Sahidic Coptic morphology</i>. Leuven: Peeters.
+                    </p>
+                    <p style="padding-left: 20px; text-indent: -20px; margin-bottom: 15px;">
+                        Schroeder, Caroline T., and Amir Zeldes. 2016. Raiders of the lost corpus. <i>Digital Humanities Quarterly</i> 10(2).
+                    </p>
+                    <p style="padding-left: 20px; text-indent: -20px; margin-bottom: 15px;">
+                        Pardeshi, Prashant, and Masayoshi Shibatani. 2023. Marathi relative and complement clause in nominalization perspective. In Rajesh Kumar and Om Prakash (eds.), <i>Language studies in India: Cognition, structure, variation</i>, 321–352. Singapore: Springer Nature.
+                    </p>
+                </div>
+            </div>
+            <div>
+                <h2><i class="fas fa-hands-helping" style="color: var(--primary);"></i> 謝辞</h2>
+                <div class="card" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%); margin-bottom: 20px;">
+                    <div class="card-header" style="color: var(--accent);">
+                        <i class="fas fa-users"></i> 研究協力
+                    </div>
+                    <p>
+                        本研究は<span class="highlight">柴谷方良</span>氏の名詞化理論に基づくものであり、草稿段階で貴重なコメントをいただきました。また、<span class="highlight">川地薫</span>氏はシダーマ語の名詞化に関する論文を共有してくださり、<span class="highlight">プラシャント・パルデシ</span>氏は名詞化に関するワークショップを企画し、重要な資料を提供してくださいました。
+                    </p>
+                </div>
+                <div class="card" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);">
+                    <div class="card-header" style="color: var(--male-color);">
+                        <i class="fas fa-university"></i> 研究助成
+                    </div>
+                    <p>
+                        本研究は<span class="highlight">日本学術振興会</span>（科研費プロジェクトID: 21K00537、23K21993）および<span class="highlight">国立国語研究所</span>（「名詞化の類型論的研究」、研究代表者：プラシャント・パルデシ）の助成を受けています。
+                    </p>
+                    <div style="background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 8px; margin-top: 15px; font-size: 0.9rem;">
+                        <div style="font-weight: 500; margin-bottom: 5px;"><i class="fas fa-database" style="color: var(--primary-light);"></i> 使用コーパス</div>
+                        <p style="margin: 0;">Coptic SCRIPTORIUM (Schroeder & Zeldes)のデータを主要分析対象として使用</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- スライド10: 終了スライド -->
+    <div class="slide">
+        <div class="text-center" style="padding-top: 200px;">
+            <h1 style="font-size: 3rem; margin-bottom: 30px;">ご清聴ありがとうございました</h1>
+            <p style="font-size: 1.5rem; margin-bottom: 40px; color: var(--primary-light);">コプト語の準体言の性標示</p>
+            <div style="width: 80px; height: 4px; background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%); margin: 0 auto 40px;"></div>
+            <p style="font-size: 1.3rem; font-weight: 500;">宮川 創</p>
+            <p style="font-size: 1rem; opacity: 0.7;">筑波大学 人文社会系</p>
+            <div style="margin-top: 50px; display: flex; justify-content: center; gap: 15px;">
+                <div class="pill pill-blue">言語類型論</div>
+                <div class="pill pill-purple">コプト語</div>
+                <div class="pill pill-orange">準体言</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- スライドインジケーター -->
+    <div class="dots-container"></div>
+</div>
+
+<script>
+    // モダンなスライドショー機能
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    
+    // ドットナビゲーションを作成
+    const dotsContainer = document.querySelector('.dots-container');
+    for (let i = 0; i < slides.length; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        dot.addEventListener('click', () => {
+            showSlide(i);
+        });
+        dotsContainer.appendChild(dot);
+    }
+    
+    // 最初のスライドを表示
+    showSlide(slideIndex);
+    
+    // 次/前のスライドを表示する関数
+    function changeSlide(n) {
+        showSlide(slideIndex += n);
+    }
+    
+    // 特定のスライドを表示する関数
+    function showSlide(n) {
+        // スライドインデックスの調整
+        if (n >= slides.length) {
+            slideIndex = 0;
+        } else if (n < 0) {
+            slideIndex = slides.length - 1;
+        } else {
+            slideIndex = n;
+        }
+        
+        // すべてのスライドとドットを非アクティブに
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].classList.remove('active');
+            document.querySelectorAll('.dot')[i].classList.remove('active');
+        }
+        
+        // 現在のスライドとドットをアクティブに
+        slides[slideIndex].classList.add('active');
+        document.querySelectorAll('.dot')[slideIndex].classList.add('active');
+        
+        // アクティブなスライドにアニメーションを追加
+        slides[slideIndex].classList.add('animate-fade');
+        setTimeout(() => {
+            slides[slideIndex].classList.remove('animate-fade');
+        }, 1000);
+    }
+    
+    // キーボードでのスライド操作
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            changeSlide(1);
+        } else if (e.key === 'ArrowLeft') {
+            changeSlide(-1);
+        }
+    });
+    
+    // スワイプ操作のサポート
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    document.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+    
+    document.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+    
+    function handleSwipe() {
+        if (touchEndX < touchStartX - 50) {
+            changeSlide(1);
+        } else if (touchEndX > touchStartX + 50) {
+            changeSlide(-1);
+        }
+    }
+</script>
+</body>
+</html>
