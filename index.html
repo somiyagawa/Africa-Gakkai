@@ -9,21 +9,21 @@
     <style>
         /* モダンなスタイル */
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1e40af;
-            --primary-light: #60a5fa;
-            --secondary: #7c3aed;
-            --secondary-light: #a78bfa;
-            --accent: #f59e0b;
-            --dark: #111827;
-            --light: #f3f4f6;
-            --gray: #4b5563;
+            --primary: turquoise;
+            --primary-dark: gold;
+            --primary-light: rgb(7, 61, 105);
+            --secondary: purple;
+            --secondary-light: violet;
+            --accent: orange ;
+            --dark: rgb(71, 71, 71);
+            --light: black;
+            --gray: #013379;
             --male-color: #3f83f8;
             --female-color: #ec4899;
-            --neutral-color: #9ca3af;
-            --background: #0f172a;
-            --card-bg: #1e293b;
-            --highlight: #f59e0b;
+            --neutral-color: green;
+            --background: navy;
+            --card-bg: white;
+            --highlight: purple;
         }
         
         body {
@@ -43,7 +43,7 @@
         }
         
         .slide {
-            width: 100%;
+            width: 97%;
             height: 100%;
             background-color: var(--card-bg);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
@@ -360,7 +360,7 @@
                     </ul>
                 </div>
                 <div class="info-block" style="margin-top: 20px;">
-                    <p style="margin: 0;"><i class="fas fa-lightbulb"></i> 「準体言」とは、動詞や文などを名詞的に機能させる言語現象を指す。柴谷方良（Masayoshi Shibatani）の理論では、名詞化と分類システムが言語の普遍的特徴として関連している。</p>
+                    <p style="margin: 0;"><i class="fas fa-lightbulb"></i> 「準体言」とは、動詞や文などを名詞的に機能させる言語現象を指す。柴谷方良（Masayoshi Shibatani）の理論では、体言化と分類システムが言語の普遍的特徴として関連している。</p>
                 </div>
             </div>
             <div>
@@ -368,15 +368,15 @@
                 <div class="card">
                     <p>コプト語の性標示：</p>
                     <div style="background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 8px; margin: 15px 0;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px; align-items: center;">
+                        <div style="display: flex; space-between;  margin-bottom: 10px; align-items: center;">
                             <span>男性単数形</span>
                             <span class="male-marker" style="font-size: 1.2rem;">p-</span>
                         </div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px; align-items: center;">
+                        <div style="display: flex; margin-bottom: 10px; align-items: center;">
                             <span>女性単数形</span>
                             <span class="female-marker" style="font-size: 1.2rem;">t-</span>
                         </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div style="display: flex;  align-items: center;">
                             <span>共通複数形</span>
                             <span class="neutral-marker" style="font-size: 1.2rem;">n-</span>
                         </div>
@@ -404,23 +404,23 @@
                 <div class="card" style="height: 330px; overflow-y: auto;">
                     <div style="display: flex; align-items: center; margin-bottom: 15px;">
                         <div style="min-width: 160px; font-weight: 500;"><span class="pill pill-blue">前3200年頃</span></div>
-                        <div>原エジプト語（原象形文字）</div>
+                        <div>先古エジプト語（原ヒエログリフ）</div>
                     </div>
                     <div style="display: flex; align-items: center; margin-bottom: 15px;">
                         <div style="min-width: 160px; font-weight: 500;"><span class="pill pill-blue">前2700-2100年頃</span></div>
-                        <div>古エジプト語（象形文字・神官文字）</div>
+                        <div>古エジプト語（ヒエログリフ・ヒエラティック）</div>
                     </div>
                     <div style="display: flex; align-items: center; margin-bottom: 15px;">
                         <div style="min-width: 160px; font-weight: 500;"><span class="pill pill-blue">前2300-400年頃</span></div>
-                        <div>中エジプト語（象形文字・神官文字）</div>
+                        <div>中エジプト語（ヒエログリフ・ヒエラティック）</div>
                     </div>
                     <div style="display: flex; align-items: center; margin-bottom: 15px;">
                         <div style="min-width: 160px; font-weight: 500;"><span class="pill pill-blue">前1400-700年頃</span></div>
-                        <div>後期エジプト語（象形文字・神官文字）</div>
+                        <div>後期エジプト語（ヒエログリフ・ヒエラティック）</div>
                     </div>
                     <div style="display: flex; align-items: center; margin-bottom: 15px;">
                         <div style="min-width: 160px; font-weight: 500;"><span class="pill pill-purple">前8世紀-後5世紀</span></div>
-                        <div>デモティック語（デモティック文字）</div>
+                        <div>デモティック語（デモティック）</div>
                     </div>
                     <div style="display: flex; align-items: center;">
                         <div style="min-width: 160px; font-weight: 500;"><span class="pill pill-orange">後3-21世紀</span></div>
@@ -556,17 +556,19 @@
                     </tr>
                     <tr>
                         <td style="font-weight: 500;">所有冠詞</td>
-                        <td style="text-align: center;"><span class="male-marker" style="font-size: 1.1rem;">p-e-f-</span></td>
-                        <td style="text-align: center;"><span class="female-marker" style="font-size: 1.1rem;">t-e-s-</span></td>
-                        <td style="text-align: center;"><span class="neutral-marker" style="font-size: 1.1rem;">n-e-u-</span></td>
+                        <td style="text-align: center;"><span class="male-marker" style="font-size: 1.1rem;">p-e-f-</span>「彼の」</td>
+                        <td style="text-align: center;"><span class="female-marker" style="font-size: 1.1rem;">t-e-f-</span>「彼の」</td>
+                        <td style="text-align: center;"><span class="neutral-marker" style="font-size: 1.1rem;">n-e-f-</span>「彼の」</td>
                     </tr>
                 </table>
                 
                 <div class="card" style="margin-top: 20px;">
                     <div class="card-header" style="color: var(--male-color);">
-                        <i class="fas fa-check-circle"></i> 単数形における<span class="highlight">義務的な</span>性標示
-                    </div>
-                    <p>単数形では男性形<span class="male-marker">p-</span>か女性形<span class="female-marker">t-</span>の選択が<span class="highlight">必須</span></p>
+                        <i class="fas fa-check-circle"></i> 形式からは<span class="highlight">不明瞭な</span>性標示   </div>
+
+                        <p>例．<span class="male-marker">kah</span>「大地」(男性名詞) vs. <span class="female-marker">pe</span>「天空」(女性名詞)</p>
+                 
+                    <p>定冠詞単数形が性標示をになう：男性形<span class="male-marker">p-</span>か女性形<span class="female-marker">t-</span></p>
                     <div style="margin-top: 10px; font-size: 0.9rem; padding: 10px; background: rgba(255, 255, 255, 0.05); border-radius: 8px;">
                         <p style="margin: 0;">
                             <i class="fas fa-code"></i> 例：<span class="male-marker">p-</span>kah n-kême (DEF.SG.M-地.M GEN-エジプト.F)
@@ -575,17 +577,19 @@
                     </div>
                 </div>
             </div>
+
+            
             <div>
                 <h2><i class="fas fa-fingerprint" style="color: var(--primary);"></i> 性標示の特徴</h2>
                 <div class="card">
                     <h3 style="margin-top: 0;">コプト語の性標示の特徴</h3>
                     <div class="card" style="background: rgba(63, 131, 248, 0.1); margin-bottom: 10px; border-left: 3px solid var(--male-color);">
                         <p style="font-weight: 500; color: var(--male-color); margin-bottom: 5px;">1. 単数形での義務的性標示</p>
-                        <p style="margin: 0;">単数形では男性か女性かの選択が<span class="highlight">必須</span></p>
+                        <p style="margin: 0;">定冠詞単数形では男性か女性かの選択が<span class="highlight">必須</span></p>
                     </div>
                     <div class="card" style="background: rgba(236, 72, 153, 0.1); margin-bottom: 10px; border-left: 3px solid var(--female-color);">
                         <p style="font-weight: 500; color: var(--female-color); margin-bottom: 5px;">2. 複数形での性対立の中和</p>
-                        <p style="margin: 0;">複数形では<span class="highlight">共通形n-</span>が使用され、性の対立が消失</p>
+                        <p style="margin: 0;">定冠詞複数形では<span class="highlight">共通形n-</span>が使用され、性の対立が消失</p>
                     </div>
                     <div class="card" style="background: rgba(156, 163, 175, 0.1); border-left: 3px solid var(--neutral-color);">
                         <p style="font-weight: 500; color: var(--neutral-color); margin-bottom: 5px;">3. 定冠詞の二重機能</p>
@@ -593,7 +597,7 @@
                     </div>
                 </div>
                 
-                <div class="gradient-bg" style="margin-top: 20px;">
+                <!-- <div class="gradient-bg" style="margin-top: 20px;">
                     <p style="font-weight: 600; margin-bottom: 10px;">数詞と性標示</p>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                         <div style="background: rgba(63, 131, 248, 0.1); padding: 10px; border-radius: 8px;">
@@ -606,10 +610,322 @@
                         </div>
                     </div>
                     <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.8;"><i class="fas fa-info-circle"></i> 数詞1-10の基本形に加え、序数も男性・女性形の区別を持つ</p>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
+
+    <!-- スライド: コプト語の名詞と性標示 -->
+<div class="slide">
+    <div class="slide-header">
+        <h1>コプト語の名詞と性標示</h1>
+    </div>
+    <div class="grid grid-2">
+        <div>
+            <h2><i class="fas fa-venus-mars" style="color: var(--primary);"></i> 名詞自体の性標示の不在</h2>
+            <div class="card">
+                <p>コプト語の名詞自体には<span class="highlight">形態的な性標示が存在しない</span>：</p>
+                <ul style="padding-left: 20px; line-height: 1.8;">
+                    <li>名詞単独では性の区別が不可能</li>
+                    <li>性の区別は<span class="highlight">定冠詞や修飾語との一致</span>によって顕在化</li>
+                    <li>ほぼすべての名詞は内在的に男性か女性のどちらかに分類される</li>
+                </ul>
+                <div style="margin-top: 15px; background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 8px;">
+                    <p style="margin: 5px 0;"><i class="fas fa-code"></i> 例：</p>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px; align-items: center;">
+                        <span><span class="male-marker">p-</span>kah (DEF.SG.M-地.M)</span>
+                        <span>「その地」</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span><span class="female-marker">t-</span>pe (DEF.SG.F-天.F)</span>
+                        <span>「その天」</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gradient-bg" style="margin-top: 20px;">
+                <p style="font-weight: 600; margin-bottom: 10px;">名詞の対の例</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div style="background: rgba(63, 131, 248, 0.1); padding: 10px; border-radius: 8px;">
+                        <p style="font-weight: 500; color: var(--male-color); margin: 0;">男性名詞</p>
+                        <p style="margin: 5px 0;"><span class="male-marker">noute</span> (神), <span class="male-marker">šêre</span> (男子), <span class="male-marker">rôme</span> (男)</p>
+                    </div>
+                    <div style="background: rgba(236, 72, 153, 0.1); padding: 10px; border-radius: 8px;">
+                        <p style="font-weight: 500; color: var(--female-color); margin: 0;">女性名詞</p>
+                        <p style="margin: 5px 0;"><span class="female-marker">ntôre</span> (女神), <span class="female-marker">šeere</span> (女子), <span class="female-marker">shime</span> (女)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2><i class="fas fa-fingerprint" style="color: var(--primary);"></i> 性の表出方法</h2>
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-layer-group"></i> 性標示の三層構造
+                </div>
+                <div class="card" style="background: rgba(63, 131, 248, 0.1); margin-bottom: 10px; border-left: 3px solid var(--male-color);">
+                    <p style="font-weight: 500; color: var(--male-color); margin-bottom: 5px;">1. 明示的な性標示</p>
+                    <p style="margin: 0;">定冠詞・指示詞・所有表現など<span class="highlight">機能語</span>に現れる</p>
+                </div>
+                <div class="card" style="background: rgba(236, 72, 153, 0.1); margin-bottom: 10px; border-left: 3px solid var(--female-color);">
+                    <p style="font-weight: 500; color: var(--female-color); margin-bottom: 5px;">2. 潜在的な性</p>
+                    <p style="margin: 0;">名詞に<span class="highlight">内在する性</span>は一致現象を通じて間接的に表出</p>
+                </div>
+                <div class="card" style="background: rgba(156, 163, 175, 0.1); border-left: 3px solid var(--neutral-color);">
+                    <p style="font-weight: 500; color: var(--neutral-color); margin-bottom: 5px;">3. 性の中和</p>
+                    <p style="margin: 0;"><span class="highlight">複数形</span>では性の対立が中和</p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- スライド: コプト語の数詞と性標示 (1) -->
+<div class="slide">
+    <div class="slide-header">
+        <h1>コプト語の数詞と性標示 (1)</h1>
+    </div>
+    <div class="grid grid-2">
+        <div>
+            <h2><i class="fas fa-sort-numeric-up" style="color: var(--primary);"></i> 基数詞における性標示</h2>
+            <div class="card">
+                <table>
+                    <tr>
+                        <th style="width: 20%;">数</th>
+                        <th style="width: 40%;">男性形</th>
+                        <th style="width: 40%;">女性形</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td style="text-align: center;"><span class="male-marker">oua</span></td>
+                        <td style="text-align: center;"><span class="female-marker">ou(e)i</span></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td style="text-align: center;"><span class="male-marker">snau</span></td>
+                        <td style="text-align: center;"><span class="female-marker">snte</span></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td style="text-align: center;"><span class="male-marker">šomnt</span></td>
+                        <td style="text-align: center;"><span class="female-marker">šomte</span></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td style="text-align: center;"><span class="male-marker">ftoou</span></td>
+                        <td style="text-align: center;"><span class="female-marker">fto(e)</span></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td style="text-align: center;"><span class="male-marker">tiou</span></td>
+                        <td style="text-align: center;"><span class="female-marker">tie</span></td>
+                    </tr>
+                </table>
+                
+                <table style="margin-top: 15px;">
+                    <tr>
+                        <td style="width: 20%;">6</td>
+                        <td style="text-align: center; width: 40%;"><span class="male-marker">soou</span></td>
+                        <td style="text-align: center; width: 40%;"><span class="female-marker">so(e)</span></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td style="text-align: center;"><span class="male-marker">sašf</span></td>
+                        <td style="text-align: center;"><span class="female-marker">sašfe</span></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td style="text-align: center;"><span class="male-marker">šmoun</span></td>
+                        <td style="text-align: center;"><span class="female-marker">šmoune</span></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td style="text-align: center;"><span class="male-marker">psis</span></td>
+                        <td style="text-align: center;"><span class="female-marker">psite</span></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td style="text-align: center;"><span class="male-marker">mêt</span></td>
+                        <td style="text-align: center;"><span class="female-marker">mnte</span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="gradient-bg" style="margin-top: 15px;">
+                <div class="card-header">
+                    <i class="fas fa-key"></i> 数詞の重要特性
+                </div>
+                <ul style="padding-left: 20px; line-height: 1.6;">
+                    <li>数詞は<span class="highlight">名詞句の分類標識</span>として機能</li>
+                    <li>被修飾名詞の性に<span class="highlight">義務的に一致</span></li>
+                    <li>数詞を含む名詞句全体は<span class="highlight">文法的に単数</span>として扱われる</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <h2><i class="fas fa-list-ol" style="color: var(--primary);"></i> 数詞と性標示の規則性</h2>
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-venus-mars"></i> 性標示のパターン
+                </div>
+                <div style="background: rgba(63, 131, 248, 0.1); padding: 15px; border-radius: 8px; margin: 10px 0; border-left: 3px solid var(--male-color);">
+                    <p style="font-weight: 500; color: var(--male-color); margin-bottom: 5px;">性標示のある数詞</p>
+                    <ul style="padding-left: 20px; line-height: 1.5; margin: 0;">
+                        <li>基本数詞 1-10</li>
+                        <li>末尾が 1, 2, 8, 9 の複合数詞</li>
+                        <li>例：11 (<span class="male-marker">mnt-oue</span>/<span class="female-marker">mnt-ouei</span>)</li>
+                        <li>例：12 (<span class="male-marker">mnt-snoous</span>/<span class="female-marker">mnt-snoous(e)</span>)</li>
+                    </ul>
+                </div>
+                <div style="background: rgba(156, 163, 175, 0.1); padding: 15px; border-radius: 8px; margin: 10px 0; border-left: 3px solid var(--neutral-color);">
+                    <p style="font-weight: 500; color: var(--neutral-color); margin-bottom: 5px;">性標示のない数詞</p>
+                    <ul style="padding-left: 20px; line-height: 1.5; margin: 0;">
+                        <li>末尾が 3-7, 0 の複合数詞</li>
+                        <li>例：13 (<span class="neutral-marker">mnt-šomte</span>)</li>
+                        <li>例：15 (<span class="neutral-marker">mnt-tê</span>)</li>
+                        <li>例：20 (<span class="neutral-marker">čouôt</span>)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card" style="margin-top: 15px;">
+                <div class="card-header">序数詞の形成</div>
+                <p>序数詞は基数詞に接頭辞<span class="highlight">meh-</span>を付加して形成される：</p>
+                <table>
+                    <tr>
+                        <th style="width: 20%;">数</th>
+                        <th style="width: 40%;">男性形</th>
+                        <th style="width: 40%;">女性形</th>
+                    </tr>
+                    <tr>
+                        <td>1番目</td>
+                        <td style="text-align: center;"><span class="male-marker">šorp</span> <span style="font-size: 0.8em; opacity: 0.7;">(例外形)</span></td>
+                        <td style="text-align: center;"><span class="female-marker">šorp(e)</span></td>
+                    </tr>
+                    <tr>
+                        <td>2番目</td>
+                        <td style="text-align: center;"><span class="male-marker">meh-snau</span></td>
+                        <td style="text-align: center;"><span class="female-marker">meh-snte</span></td>
+                    </tr>
+                    <tr>
+                        <td>3番目</td>
+                        <td style="text-align: center;"><span class="male-marker">meh-šomnt</span></td>
+                        <td style="text-align: center;"><span class="female-marker">meh-šomte</span></td>
+                    </tr>
+                </table>
+                <p style="font-size: 0.9rem; margin-top: 10px;"><i class="fas fa-info-circle"></i> 基数詞の性標示パターンが序数詞にも継承される</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- スライド: コプト語の数詞と性標示 (2) -->
+<div class="slide">
+    <div class="slide-header">
+        <h1>コプト語の数詞と性標示 (2)</h1>
+    </div>
+    <div class="grid grid-2">
+        <div>
+            <h2><i class="fas fa-sort-numeric-up-alt" style="color: var(--primary);"></i> 複合数詞の形成と性標示</h2>
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-puzzle-piece"></i> 複合数詞の構造
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 8px; margin: 10px 0;">
+                    <p style="margin: 0 0 5px 0; font-weight: 500;">10 代の数</p>
+                    <p style="margin: 0;">
+                        <span class="highlight">mnt-</span> + 基数詞<br>
+                        例：11 = <span class="male-marker">mnt-oue</span> / <span class="female-marker">mnt-ouei</span>
+                    </p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 8px; margin: 10px 0;">
+                    <p style="margin: 0 0 5px 0; font-weight: 500;">20 代の数</p>
+                    <p style="margin: 0;">
+                        <span class="highlight">čout-</span> + 基数詞<br>
+                        例：22 = <span class="male-marker">čout-snoous</span> / <span class="female-marker">ǒut-snoouse</span>
+                    </p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 8px; margin: 10px 0;">
+                    <p style="margin: 0 0 5px 0; font-weight: 500;">30 以上の 10 の倍数</p>
+                    <p style="margin: 0;">
+                        特有の形態：<span class="highlight">maab</span> (30), <span class="highlight">hme</span> (40), <span class="highlight">taeiou</span> (50) など<br>
+                        例：30 = <span class="male-marker">maab</span> / <span class="female-marker">maabe</span>
+                    </p>
+                </div>
+            </div>
+            <div class="card" style="margin-top: 15px; height: 220px; overflow-y: auto;">
+                <div class="card-header">
+                    <i class="fas fa-calculator"></i> 大きな数の例
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 8px; margin: 10px 0;">
+                    <p style="margin: 0 0 5px 0; font-weight: 500;">100 と 1000</p>
+                    <p style="margin: 0;">
+                        100 = <span class="neutral-marker">še</span><br>
+                        200 = <span class="neutral-marker">šêt</span><br>
+                        300 = <span class="neutral-marker">šmnt-še</span><br>
+                        1000 = <span class="neutral-marker">šo</span>
+                    </p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 8px; margin: 10px 0;">
+                    <p style="margin: 0 0 5px 0; font-weight: 500;">極めて大きな数 (9999)</p>
+                    <p style="margin: 0; word-break: break-word;">
+                        <span class="male-marker">psis n-šo mn-psis n-še mn-pstaiou-psis</span><br>
+                        <span class="female-marker">psis n-šo mn-psis n-še mn-pstaiou-psite</span><br>
+                        <span style="font-size: 0.8em; opacity: 0.7;">（「9千と9百と90-9」の意）</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2><i class="fas fa-code-branch" style="color: var(--primary);"></i> 数詞の統語構造</h2>
+            <div class="card">
+                <ul style="padding-left: 20px; line-height: 1.6;">
+                    <li>数詞「1」：不定冠詞<span class="highlight">ou-</span>（性標示なし）を使用
+                        <ul style="padding-left: 20px;">
+                            <li><span class="highlight">ou-rôme</span>「一人の男」</li>
+                        </ul>
+                    </li>
+                    <li>数詞「2」：<span class="highlight">N + 数詞</span>の語順
+                        <ul style="padding-left: 20px;">
+                            <li><span class="highlight">son snau</span>「二人の兄弟」</li>
+                            <li><span class="highlight">shime snte</span>「二人の女性」</li>
+                        </ul>
+                    </li>
+                    <li>数詞「3」以上：<span class="highlight">数詞 + n- + N</span>の構造
+                        <ul style="padding-left: 20px;">
+                            <li><span class="highlight">šomnt n-rôme</span>「三人の男性」</li>
+                            <li><span class="highlight">šomte n-shime</span>「三人の女性」</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="card" style="margin-top: 15px;">
+                <div class="card-header">
+                    <i class="fas fa-exclamation-triangle"></i> 形式と機能の乖離
+                </div>
+                <p>数詞「3」以上の構造は：</p>
+                <ul style="padding-left: 20px; line-height: 1.6;">
+                    <li><span class="highlight">形式的にはNP用法</span>：数詞が名詞句の主要部として機能</li>
+                    <li><span class="highlight">機能的には修飾用法</span>：実際には別の名詞を修飾</li>
+                    <li>これはコプト語の<span class="highlight">主要部前置型</span>の構造に起因</li>
+                </ul>
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 8px; margin: 10px 0;">
+                    <p style="margin: 0 0 5px 0; font-weight: 500;">例：</p>
+                    <p style="margin: 0;">
+                        <span class="highlight">p-mnt-snoous n-apostolos</span><br>
+                        DEF.SG.M-ten-two.M GEN-apostle<br>
+                        「十二使徒」<span style="font-size: 0.8em; opacity: 0.7;">（直訳：「十二（男性形）の使徒」）</span>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="info-block" style="margin-top: 15px;">
+                <p style="margin: 0;"><i class="fas fa-lightbulb"></i> 数詞における性標示は柴谷の名詞化階層において<span class="highlight">最上位に位置</span>し、より文法化された要素（指示詞・属格など）よりも<span class="highlight">強く性の区別を保持</span>する傾向がある。</p>
+            </div>
+        </div>
+    </div>
+</div>
     
     <!-- スライド6: 用言基盤準体言の例1 -->
     <div class="slide">
@@ -655,7 +971,7 @@
                 <div class="card">
                     <h3 style="margin-top: 0;">定冠詞の二重機能</h3>
                     <div class="card" style="background: rgba(63, 131, 248, 0.1); margin-bottom: 15px; border-left: 3px solid var(--male-color);">
-                        <p style="font-weight: 500; color: var(--male-color); margin-bottom: 5px;">名詞句用法標示</p>
+                        <p style="font-weight: 500; color: var(--male-color); margin-bottom: 5px;">性・数の情報を表示する名詞句用法標示</p>
                         <p style="margin: 0;">定冠詞が<span class="highlight">節や動詞句</span>を名詞句として成立させる</p>
                     </div>
                     <div class="card" style="background: rgba(236, 72, 153, 0.1); border-left: 3px solid var(--female-color);">
@@ -696,14 +1012,14 @@
     <!-- スライド7: 用言基盤準体言の例2 -->
     <div class="slide">
         <div class="slide-header">
-            <h1>用言基盤準体言の具体例（2）</h1>
+            <h1>用言基盤準体言の興味深い例（2）</h1>
         </div>
         <div class="grid grid-2">
             <div>
-                <h2><i class="fas fa-vial" style="color: var(--primary);"></i> 文法化の事例</h2>
+                <h2><i class="fas fa-vial" style="color: var(--primary);"></i> 定冠詞と関係転換詞の一形態素化の事例</h2>
                 <div class="card">
                     <div class="card-header" style="color: var(--male-color);">
-                        <i class="fas fa-code-branch"></i> 文法化による体言化接頭辞の発展
+                        <i class="fas fa-code-branch"></i> 用言基盤体言化接頭辞の発展
                     </div>
                     <div style="background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 8px; margin: 15px 0; font-family: monospace;">
                         <p style="font-size: 1.2rem; letter-spacing: 1px;">
@@ -801,11 +1117,11 @@
                     <div style="font-size: 0.9rem;">
                         <div style="display: flex; margin-bottom: 5px;">
                             <div style="min-width: 20px; text-align: center; margin-right: 5px;"><i class="fas fa-check" style="color: var(--accent);"></i></div>
-                            <div>階層上部（数詞・指示詞・属格）では理論と一致</div>
+                            <div>大部分では理論と一致</div>
                         </div>
                         <div style="display: flex;">
                             <div style="min-width: 20px; text-align: center; margin-right: 5px;"><i class="fas fa-exclamation" style="color: var(--accent);"></i></div>
-                            <div>用言基盤準体言では形容詞との関係に例外が見られる</div>
+                            <div>一部の数詞と用言基盤準体言では例外が見られる</div>
                         </div>
                     </div>
                 </div>
@@ -857,7 +1173,7 @@
                     <div class="card-header">
                         <i class="fas fa-quote-left"></i> 研究の普遍的意義
                     </div>
-                    <p>本研究は、言語の分類システムの本質的機能が単なる語彙的区分ではなく、言語の統語的・談話的組織化にあることを示している。性標示が準体言形成に果たす二重機能は、人間言語における名詞化と分類体系の相互作用の普遍的メカニズムの理解に貢献する。</p>
+                    <p>本研究は、言語の分類システムの本質的機能が単なる語彙的区分ではなく、言語の統語的・談話的組織化にあることを示している。性標示が準体言形成に果たす二重機能は、人間言語における体言化と分類体系の相互作用の普遍的メカニズムの理解に貢献する。</p>
                 </div>
             </div>
         </div>
@@ -899,7 +1215,7 @@
                         <i class="fas fa-users"></i> 研究協力
                     </div>
                     <p>
-                        本研究は<span class="highlight">柴谷方良</span>氏の名詞化理論に基づくものであり、草稿段階で貴重なコメントをいただきました。また、<span class="highlight">河内一博</span>氏はシダーマ語の名詞化に関する論文を共有してくださり、<span class="highlight">プラシャント・パルデシ</span>氏は名詞化に関するワークショップを企画し、重要な資料を提供してくださいました。
+                        本研究は<span class="highlight">柴谷方良</span>氏の体言化理論に基づくものであり、草稿段階で貴重なコメントをいただきました。また、<span class="highlight">河内一博</span>氏はシダーマ語の体言化に関する論文を共有してくださり、<span class="highlight">プラシャント・パルデシ</span>氏は体言化に関するワークショップを企画し、重要な資料を提供してくださいました。
                     </p>
                 </div>
                 <div class="card" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);">
@@ -907,7 +1223,7 @@
                         <i class="fas fa-university"></i> 研究助成
                     </div>
                     <p>
-                        本研究は<span class="highlight">日本学術振興会</span>（科研費プロジェクトID: 21K00537、23K21993）および<span class="highlight">国立国語研究所</span>（「名詞化の類型論的研究」、研究代表者：プラシャント・パルデシ）の助成を受けています。
+                        本研究は<span class="highlight">日本学術振興会</span>（科研費プロジェクトID: 21K00537、23K21993）および<span class="highlight">国立国語研究所</span>（「体言化の類型論的研究」、研究代表者：プラシャント・パルデシ）の助成を受けています。
                     </p>
                     <div style="background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 8px; margin-top: 15px; font-size: 0.9rem;">
                         <div style="font-weight: 500; margin-bottom: 5px;"><i class="fas fa-database" style="color: var(--primary-light);"></i> 使用コーパス</div>
